@@ -1,19 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import {useState} from 'react'
+import Header from './components/Header'
+import FeedbackList from './components/FeedbackList'
+import FeedbackData from './data/feedbackData'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [feedback, setFeedback] = useState(FeedbackData)
+
+  if ( ! feedback || feedback.length === 0 ) { 
+
+    return (
+
+    <>
+
+    <Header />
+    
+     <p>No Feedback yet</p>   
+
+    </>
+
+    )
+  
+  }
 
   return (
     <>
-      <div>
+      
+      <Header />
 
-        <div className="h1 text-6xl">Hello World!</div>
-      </div>
+      <div className="container">
+
+      <FeedbackList feedback={feedback} />
+        
+      
+        </div>
+
+      
+
     </>
+
   )
+
 }
 
 export default App
