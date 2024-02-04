@@ -2,7 +2,7 @@ import React from 'react'
 import FeedbackItem from './FeedbackItem'
 import PropTypes from 'prop-types'
 
-function FeedbackList({feedback}) {
+function FeedbackList({feedback, handleDelete}) {
 
 
   return (
@@ -12,7 +12,7 @@ function FeedbackList({feedback}) {
 
       {feedback.map((item) => (
 
-          <FeedbackItem key={item.id} item ={item} />
+          <FeedbackItem key={item.id} item ={item} handleDelete={handleDelete} />
       
       ))}
 

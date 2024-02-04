@@ -9,6 +9,16 @@ function App() {
 
   const [feedback, setFeedback] = useState(FeedbackData)
 
+  const deleteFeedback = (id) => {
+
+    if (window.confirm('Are you sure?')) {
+
+      setFeedback(feedback.filter((item) => item.id !== id))
+
+    }
+
+  }
+
   if ( ! feedback || feedback.length === 0 ) { 
 
     return (
@@ -32,7 +42,7 @@ function App() {
 
       <div className="container">
 
-      <FeedbackList feedback={feedback} />
+      <FeedbackList feedback={feedback} handleDelete={(deleteFeedback)} />
         
       
         </div>
