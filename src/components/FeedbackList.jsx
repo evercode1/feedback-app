@@ -5,20 +5,16 @@ import PropTypes from 'prop-types'
 function FeedbackList({feedback}) {
 
 
-    console.log(feedback)
-
   return (
 
     
     <div className="feeback-list">
 
-      {feedback.map((item) => {
+      {feedback.map((item) => (
 
-        return (
-          
           <FeedbackItem key={item.id} item ={item} />
-        )
-      })}
+      
+      ))}
 
     </div>
   )
