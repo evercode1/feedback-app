@@ -3,6 +3,7 @@ import {useState} from 'react'
 import Header from './components/Header'
 import FeedbackList from './components/FeedbackList'
 import FeedbackData from './data/feedbackData'
+import FeedbackStats from './components/FeedbackStats'
 
 
 function App() {
@@ -19,28 +20,14 @@ function App() {
 
   }
 
-  if ( ! feedback || feedback.length === 0 ) { 
-
-    return (
-
-    <>
-
-    <Header />
-    
-     <p>No Feedback yet</p>   
-
-    </>
-
-    )
-  
-  }
-
   return (
     <>
       
       <Header />
 
       <div className="container">
+
+      <FeedbackStats feedback={feedback} />
 
       <FeedbackList feedback={feedback} handleDelete={(deleteFeedback)} />
         
