@@ -62,21 +62,17 @@ function FeedbackForm() {
 
            if (feedbackEdit.edit === true) {
 
-            updateFeedback(feedbackEdit.item.id, newFeedback)
+                updateFeedback(feedbackEdit.item.id, newFeedback)
 
-            setBtnDisabled(true)
-
-
-
-            
+                setBtnDisabled(true)
 
            } else {
 
 
-            addFeedback(newFeedback)
+                addFeedback(newFeedback)
 
-            setText('')
-            
+                setText('')
+
            }
 
            
