@@ -64,7 +64,7 @@ function FeedbackForm() {
 
                 updateFeedback(feedbackEdit.item.id, newFeedback)
 
-                setBtnDisabled(true)
+                setText('')
 
            } else {
 
