@@ -7,7 +7,7 @@ import RatingSelect from './RatingSelect'
 
 function FeedbackForm() {
 
-    const { addFeedback, feedbackEdit } = useContext(FeedbackContext)
+    const { addFeedback, feedbackEdit, updateFeedback } = useContext(FeedbackContext)
     const [text, setText] = useState('')
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [message, setMessage] = useState('')
@@ -60,9 +60,26 @@ function FeedbackForm() {
 
            }
 
-           addFeedback(newFeedback)
+           if (feedbackEdit.edit === true) {
 
-           setText('')
+            updateFeedback(feedbackEdit.item.id, newFeedback)
+
+            setBtnDisabled(true)
+
+
+
+            
+
+           } else {
+
+
+            addFeedback(newFeedback)
+
+            setText('')
+            
+           }
+
+           
 
         }    
 
