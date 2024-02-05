@@ -1,12 +1,14 @@
 import Card from './shared/Card'
 import {useState} from 'react'
 import Button from './shared/Button'
+import RatingSelect from './RatingSelect'
 
 function FeedbackForm() {
 
     const [text, setText] = useState('')
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [message, setMessage] = useState('')
+    const [rating, setRating] = useState(10)
 
     const handleTextChange = (e) => {  
 
@@ -19,7 +21,7 @@ function FeedbackForm() {
 
             setBtnDisabled(false)
             setMessage('Your review must be at least 10 characters long')
-            
+
         } else {
 
             setBtnDisabled(false)
@@ -31,30 +33,32 @@ function FeedbackForm() {
     }
 
 
-  return (
-    <Card>
+    return (
 
-        <form className="form">
+        <Card>
 
-            <h2>How would you rate your service with us?</h2>
+            <form className="form">
 
-            {/** @todo - rating select componente */ }
+                <h2>How would you rate your service with us?</h2>
 
-            <div className="input-group">
+                <RatingSelect select={(rating) => setRating(rating)} />   
 
-                <input onChange={handleTextChange} type="text" placeholder='Write a review' value={text} />
+                <div className="input-group">
 
-                <Button type='submit' isDisabled={btnDisabled}>Send</Button>
+                    <input onChange={handleTextChange} type="text" placeholder='Write a review' value={text} />
 
-            </div>
+                    <Button type='submit' isDisabled={btnDisabled}>Send</Button>
 
-            {message && <div className="message">{message}</div>}
+                </div>
 
+                {message && <div className="message">{message}</div>}
 
-        </form>
+            </form>
       
-    </Card>
-  )
+        </Card>
+
+    )
+
 }
 
-export default FeedbackForm
+    export default FeedbackForm
