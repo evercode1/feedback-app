@@ -8,6 +8,7 @@ import FeedbackData from './data/feedbackData'
 import FeedbackStats from './components/FeedbackStats'
 import FeedbackForm from './components/FeedbackForm'
 import AboutPage from './pages/AboutPage'
+import { FeedbackProvider } from './context/FeedbackContext'
 import AboutIconLink from './components/AboutIconLink'
 
 
@@ -34,6 +35,8 @@ function App() {
   }
 
   return (
+
+    <FeedbackProvider>
 
     <Router>
 
@@ -66,6 +69,8 @@ function App() {
         </div>
 
     </Router>
+
+    </FeedbackProvider>
 
   )
 
