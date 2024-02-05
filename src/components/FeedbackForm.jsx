@@ -3,7 +3,7 @@ import {useState} from 'react'
 import Button from './shared/Button'
 import RatingSelect from './RatingSelect'
 
-function FeedbackForm() {
+function FeedbackForm( { handleAdd } ) {
 
     const [text, setText] = useState('')
     const [btnDisabled, setBtnDisabled] = useState(true)
@@ -17,7 +17,7 @@ function FeedbackForm() {
             setBtnDisabled(true)
             setMessage(null)
 
-        } else if (text !== '' && text.trim().length <= 10) {
+        } else if (text !== '' && text.trim().length < 10) {
 
             setBtnDisabled(false)
             setMessage('Your review must be at least 10 characters long')
@@ -32,12 +32,35 @@ function FeedbackForm() {
 
     }
 
+    const handleSubmit = (e) => {
+
+        e.preventDefault()
+
+        if ( text.trim().length >= 10 ) {
+
+           const newFeedback = {
+
+            text,
+            rating,
+
+           }
+
+           handleAdd(newFeedback)
+
+           setText('')
+
+        }
+
+        
+
+    }
+
 
     return (
 
         <Card>
 
-            <form className="form">
+            <form onSubmit={handleSubmit} className="form">
 
                 <h2>How would you rate your service with us?</h2>
 
