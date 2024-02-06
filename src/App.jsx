@@ -11,10 +11,7 @@ import AboutIconLink from './components/AboutIconLink'
 
 function App() {
 
-
   return (
-
-    
 
     <Router>
 
@@ -27,8 +24,7 @@ function App() {
             <Route exact path='/' element={
 
               <>
-              
-              
+                 
               <FeedbackProvider>
 
                 <FeedbackForm />
@@ -37,9 +33,7 @@ function App() {
 
                 <FeedbackList />
 
-              </FeedbackProvider>
-
-              
+              </FeedbackProvider>             
               
               </>
 
@@ -53,9 +47,7 @@ function App() {
 
         </div>
 
-    </Router>
-
-    
+    </Router>   
 
   )
 
