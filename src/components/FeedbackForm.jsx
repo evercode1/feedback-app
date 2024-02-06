@@ -68,14 +68,11 @@ function FeedbackForm() {
 
            } else {
 
-
                 addFeedback(newFeedback)
 
                 setText('')
 
-           }
-
-           
+           }        
 
         }    
 

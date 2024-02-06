@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
 const FeedbackContext = createContext()
 
@@ -16,6 +15,7 @@ export const FeedbackProvider = ({ children }) => {
 
     })
 
+
     useEffect(() => { 
 
        fetchFeedback()
@@ -24,7 +24,7 @@ export const FeedbackProvider = ({ children }) => {
 
     const fetchFeedback = async () => {
 
-        const response = await fetch('http://localhost:3000/feedback?_sort=id')
+        const response = await fetch('/feedback?_sort=id')
 
         const data = await response.json()
 
@@ -34,10 +34,15 @@ export const FeedbackProvider = ({ children }) => {
 
     }
     
-
-    const deleteFeedback = (id) => {
+    const deleteFeedback = async (id) => {
 
         if (window.confirm('Are you sure?')) {
+
+            await fetch(`/feedback/${id}`, {
+
+                method: 'DELETE'
+
+            })
     
           setFeedback(feedback.filter((item) => item.id !== id))
     
@@ -54,18 +59,45 @@ export const FeedbackProvider = ({ children }) => {
 
     // update item
 
-    const updateFeedback = (id, updItem) => {  
+    const updateFeedback = async (id, updItem) => {  
 
-        setFeedback(feedback.map((item) => (item.id === id ? { ...item, ...updItem } : item)))
+        const response = await fetch(`/feedback/${id}`, {
+
+            method: 'PUT',
+            headers: {  
+
+                'Content-type': 'application/json'
+
+            },
+            body: JSON.stringify(updItem)
+
+        })
+
+        const data = await response.json()
+
+        setFeedback(feedback.map((item) => (item.id === id ? { ...item, ...data } : item)))
 
     }
 
 
-    const addFeedback = (newFeedback) => { 
+    const addFeedback = async (newFeedback) => { 
+
+        const response = await fetch( '/feedback', {
     
-        newFeedback.id = uuidv4()
+            method: 'POST',
+            headers: {
     
-        setFeedback([newFeedback, ...feedback])
+                'Content-type': 'application/json'
+    
+            },
+
+            body: JSON.stringify(newFeedback)
+
+        })
+
+        const data = await response.json()
+    
+        setFeedback([data, ...feedback])
     
     }
     
