@@ -14,7 +14,7 @@ function App() {
 
   return (
 
-    <FeedbackProvider>
+    
 
     <Router>
 
@@ -29,12 +29,15 @@ function App() {
               <>
               
               
+              <FeedbackProvider>
 
-              <FeedbackForm />
+                <FeedbackForm />
 
-              <FeedbackStats />
+                <FeedbackStats />
 
-              <FeedbackList />
+                <FeedbackList />
+
+              </FeedbackProvider>
 
               
               
@@ -52,7 +55,7 @@ function App() {
 
     </Router>
 
-    </FeedbackProvider>
+    
 
   )
 
